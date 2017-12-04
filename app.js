@@ -3,7 +3,7 @@ const simpleGit = require('simple-git/promise'),
       basePath = '/var/www',
       repoInfo = require('./repos-and-branches.json'),
       pm = require('promisemaker'),
-      exec = pm(require('child_process').exec);
+      exec = pm(requi re('child_process').exec);
 
 // checkout a branch and make a pull for that branch
 async function pull(repoPath, branch, run) {
@@ -51,9 +51,8 @@ async function pull(repoPath, branch, run) {
 
 // every 10 seconds, loop through our repos
 // and call the pull function
-setInterval(() => {
-  for (let repo of repoInfo) {
-    // får tillbaka ett objekt med en path och vilken branch man borde ligga på
+setInterval(()=>{
+  for(let repo of repoInfo){
     pull(
       path.join(basePath, repo.path),
       repo.branch,
