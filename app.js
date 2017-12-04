@@ -3,7 +3,7 @@ const simpleGit = require('simple-git/promise'),
       basePath = '/var/www',
       repoInfo = require('./repos-and-branches.json'),
       pm = require('promisemaker'),
-      exec = pm(requi re('child_process').exec);
+      exec = pm(require('child_process')).exec;
 
 // checkout a branch and make a pull for that branch
 async function pull(repoPath, branch, run) {

@@ -4,7 +4,7 @@
     "branch": "master",
     "run": [
       "npm install",
-      "pm2 restart reverse-proxy"
+      "pm2 restart reverse-proxy --silent"
     ]
   },
   {
@@ -12,7 +12,7 @@
     "branch": "master",
     "run": [
       "npm install",
-      "pm2 restart cerbot-helper"
+      "pm2 restart cerbot-helper --silent"
     ]
   },
   {
@@ -20,7 +20,7 @@
     "branch": "master",
     "run": [
       "npm install",
-      "pm2 restart testapp"
+      "pm2 restart testapp --silent"
     ]
   },
   {
@@ -28,7 +28,7 @@
     "branch": "master",
     "run": [
       "npm install",
-      "pm2 restart example"
+      "pm2 restart example --silent"
     ]
   },
   {
@@ -36,7 +36,7 @@
     "branch": "master",
     "run": [
       "npm install",
-      "pm2 restart auto-git"
+      "pm2 restart auto-git --silent"
     ]
   }
 ]
