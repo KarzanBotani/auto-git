@@ -7,8 +7,7 @@ const simpleGit = require('simple-git/promise'),
 
 // checkout a branch and make a pull for that branch
 async function pull(repoPath, branch, run) {
-  let changed = status.files && status.files.length != 0,
-      repo,
+  let repo,
       status,
       err;
 
@@ -19,6 +18,8 @@ async function pull(repoPath, branch, run) {
   } catch (e) {
     err = e;
   }
+
+  let changed = status.files && status.files.length != 0;
 
   // only logs changes and errors
   if (changed) {
@@ -59,4 +60,4 @@ setInterval(() => {
       repo.run
     );
   }
-}, 10);
+}, 10000);
