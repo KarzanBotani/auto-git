@@ -1,7 +1,42 @@
 [
-  { "path": "reverse-proxy", "branch": "master" },
-  { "path": "cerbot-helper", "branch": "master" },
-  { "path": "testapp", "branch": "master" },
-  { "path": "example", "branch": "master" },
-  { "path": "auto-git", "branch": "master" }
+  {
+    "path": "reverse-proxy",
+    "branch": "master",
+    "run": [
+      "npm install",
+      "pm2 restart reverse-proxy"
+    ]
+  },
+  {
+    "path": "cerbot-helper",
+    "branch": "master",
+    "run": [
+      "npm install",
+      "pm2 restart cerbot-helper"
+    ]
+  },
+  {
+    "path": "testapp",
+    "branch": "master",
+    "run": [
+      "npm install",
+      "pm2 restart testapp"
+    ]
+  },
+  {
+    "path": "example",
+    "branch": "master",
+    "run": [
+      "npm install",
+      "pm2 restart example"
+    ]
+  },
+  {
+    "path": "auto-git",
+    "branch": "master",
+    "run": [
+      "npm install",
+      "pm2 restart auto-git"
+    ]
+  }
 ]

@@ -1,11 +1,14 @@
 const simpleGit = require('simple-git/promise'),
       path = require('path'), // jämnar ut skillnaden mellan operativystem när man slår ihop paths
       basePath = '/var/www',
-      repoInfo = require('./repos-and-branches.json');
+      repoInfo = require('./repos-and-branches.json'),
+      pm = require('promisemaker'),
+      exec = pm(require('child_process').exec);
 
 // checkout a branch and make a pull for that branch
-async function pull(repoPath, branch) {
-  let repo,
+async function pull(repoPath, branch, run) {
+  let changed = status.files && status.files.length != 0,
+      repo,
       status,
       err;
 
@@ -18,13 +21,31 @@ async function pull(repoPath, branch) {
   }
 
   // only logs changes and errors
-  if (status.files && status.files.length != 0) {
-    console.log('pull-success: ', status);
+  if (changed) {
+    console.log('pull-success: ', repoPath, branch, status);
   }
 
   if (err) {
-    console.log('pull-error: ', error)
+    console.log('pull-error: ', repoPath, branch, error)
   }
+
+  if (changed && run) {
+    for (let cmd of run) {
+      let err, result = await exec(
+        cmd,
+        {cwd: repoPath}
+      ).catch((e) => err = e);
+
+      if (result) {
+        console.log('Running: ', cmd, '\n', result);
+      }
+
+      if (err) {
+        console.log('Error running: ', cmd, '\n', err);
+      }
+    }
+  }
+
 }
 
 // every 10 seconds, loop through our repos
@@ -32,6 +53,10 @@ async function pull(repoPath, branch) {
 setInterval(() => {
   for (let repo of repoInfo) {
     // får tillbaka ett objekt med en path och vilken branch man borde ligga på
-    pull(path.join(basePath, repo.path), repo.branch)
+    pull(
+      path.join(basePath, repo.path),
+      repo.branch,
+      repo.run
+    );
   }
-}, 10000);
+}, 10);
