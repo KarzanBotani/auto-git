@@ -1,11 +1,10 @@
 const simpleGit = require('simple-git/promise'),
-      path = require('path'), // jämnar ut skillnaden mellan operativystem när man slår ihop paths
+      path = require('path'),
       basePath = '/var/www',
       repoInfo = require('./repos-and-branches.json'),
       pm = require('promisemaker'),
       exec = pm(require('child_process')).exec;
 
-// checkout a branch and make a pull for that branch
 async function pull(repoPath, branch, run) {
   let repo,
       status,
@@ -21,7 +20,6 @@ async function pull(repoPath, branch, run) {
 
   let changed = status.files && status.files.length != 0;
 
-  // only logs changes and errors
   if (changed) {
     console.log('pull-success: ', repoPath, branch, status);
   }
@@ -46,11 +44,8 @@ async function pull(repoPath, branch, run) {
       }
     }
   }
-
 }
 
-// every 10 seconds, loop through our repos
-// and call the pull function
 setInterval(()=>{
   for(let repo of repoInfo){
     pull(
