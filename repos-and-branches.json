@@ -37,6 +37,5 @@
       "npm install",
       "pm2 restart crypto-monitor --silent"
     ]
-  },
-
+  }
 ]
