@@ -8,11 +8,11 @@
     ]
   },
   {
-    "path": "cerbot-helper",
+    "path": "certbot-helper",
     "branch": "master",
     "run": [
       "npm install",
-      "pm2 restart cerbot-helper --silent"
+      "pm2 restart certbot-helper --silent"
     ]
   },
   {
