@@ -16,27 +16,27 @@
     ]
   },
   {
-    "path": "testapp",
-    "branch": "master",
-    "run": [
-      "npm install",
-      "pm2 restart testapp --silent"
-    ]
-  },
-  {
-    "path": "example",
-    "branch": "master",
-    "run": [
-      "npm install",
-      "pm2 restart example --silent"
-    ]
-  },
-  {
     "path": "auto-git",
     "branch": "master",
     "run": [
       "npm install",
       "pm2 restart auto-git --silent"
     ]
-  }
+  },
+  {
+    "path": "portfolio",
+    "branch": "master",
+    "run": [
+      "npm install",
+      "pm2 restart portfolio --silent"
+    ]
+  },{
+    "path": "crypto-monitor",
+    "branch": "master",
+    "run": [
+      "npm install",
+      "pm2 restart crypto-monitor --silent"
+    ]
+  },
+
 ]
